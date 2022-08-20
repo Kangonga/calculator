@@ -1,40 +1,21 @@
-//create a calculator object to help track the values
-
-const calculator = {
-    displayValue : 'start',
-    firstOperand: null,
-    waitingForSecondOperand: false,
-    operator: null,
-};
-
-function inputDigit(digit){
-    let { displayValue } = calculator
-    calculator.displayValue = displayValue==='start'?digit:displayValue+digit;
-}
-
-function updateDisplay (){
-    //select screen
-    let screen = document.querySelector('#screen')
-
-    //update screen value
-    screen.value= calculator.displayValue;
-}
-updateDisplay()
-
-const keys = document.querySelector('#buttonContainer');
-keys.addEventListener('click', (event)=>{
-    //access the clicked event. target is initialized as an object
-    //this is because events are objects
-    const clicked = event.target
-    // alert(clicked.classList);alert(clicked.innerText)
-    if(clicked.classList.contains('numbers')){
-        inputDigit(clicked.innerText)
-        updateDisplay()
-    }
-})
-
-let inputDecimal = function(dot){
-    if(!calculator.displayValue.includes(dot)){
-        calculator.displayValue+=dot;
-    }
-}
+//A calculator has several functionalities
+//1: take input from user clicks on buttons
+//2: check type of input ie number,operator,decimal etc
+//4: display the values
+//3: control flow
+//3.1: If input is a number, allow only one decimal place
+//3.2: Append all number input
+//3.3: If clear is encountered; reset everything
+//3.4: If an operator is encountered, dont append
+//3.4.1: Store the existing data on a variable
+//3.4.2: Store the operator on a variable
+//3.4.2: wait for another variable
+//3.4.3: append the variable on screen
+//3.5: If another value is detected, evaluate the first two
+//3.5.1: pass that to the first operand.
+//3.5.2: repeat step 3.4 
+//VERSION 1.0
+//1:Detect numbers
+//2:Detect operators
+//3:Display
+//4://compute results
