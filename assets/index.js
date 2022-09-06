@@ -20,7 +20,7 @@ const operatorScreen = document.querySelector('.operator')
 const numberScreen = document.querySelector('.numbers')
 function handleclick(event){
     let clicked = event.target.textContent
-    let operator;
+    let operator,result;
     let calculating = true;
     if(numbers.includes(parseInt(clicked))){
         screenBottom.textContent += clicked
@@ -36,11 +36,25 @@ function handleclick(event){
         screenTop.textContent = screenBottom.textContent
         screenBottom.textContent = ''
         operatorScreen.textContent = clicked
+        operator = clicked
         }
-        else{
+        else if(clicked == '='){
             let operand1 = parseInt(screenTop.textContent)
             let operand2 = parseInt(screenBottom.textContent)
-            alert(operand1*operand2)
+            if(operatorScreen.textContent == 'x'){
+                result = operand1*operand2
+            }
+            else if(operatorScreen.textContent=='+'){
+                result = operand1+operand2
+            }
+            else if(operatorScreen.textContent=='/'){
+                result = operand1/operand2
+            }
+            else if(operatorScreen.textContent=='-'){
+                result = operand1-operand2
+            }
+            screenTop.textContent = result
+            screenBottom.textContent = ''
         }
     }
 
