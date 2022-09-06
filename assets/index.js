@@ -1,31 +1,47 @@
-// //two parts
-// //display and computation
-// //display detects the clicked buttons and displays them
-// //computation evaluates and prints results
+//version 1
+//screen divided to 2 parts. lower and upper
+//detect the buttons selected
+//display the results on the screen
+//when an operator is encountered, the previous text moves to the upper screen
 
-// //display
-// //add an event listener to all buttons
-// //listen for clicks
-// //on click detect the innertext and return it
-// //create an inline dom element
-// //pass the value to the dom element
-// //append the element to the screen container
-// function alt (param){
-//     while(true){
-//     let a = param
-//     let sc = document.querySelector('#screen')
-//     sc.innerText = a
-//     if(a=="ans"){
-//         return false
-//     }
-//     }
-// }
+//clicked button contains desired text
+//can delete and clear the operators
+//puts first operand to top screen when a operator is pressed
+//displays the operator used
 
-// let buns = document.querySelectorAll('.buttons')
-// buns.forEach(addEventListener(
-//     'click',(e)=>{
-//         alt(e.target.innerText)
-//         }
-// ))
+const numbers = [1,2,3,4,5,6,7,8,9]
+const operators = ['/','*','%','^','+','-','=','x']
+const buttonContainer = document.querySelector('#buttonContainer')
+buttonContainer.addEventListener('click',handleclick)
+const screen = document.querySelector('#screen')
+const screenTop = document.querySelector('.screenTop')
+const screenBottom = document.querySelector('.screenBottom')
+const operatorScreen = document.querySelector('.operator')
+const numberScreen = document.querySelector('.numbers')
+function handleclick(event){
+    let clicked = event.target.textContent
+    let operator;
+    let calculating = true;
+    if(numbers.includes(parseInt(clicked))){
+        screenBottom.textContent += clicked
+    }
+    else if(clicked=='del'){
+        screenBottom.textContent = screenBottom.textContent.slice(0,-1)
+    }
+    else if(clicked=='clear'){
+        location.reload();
+    }
+    else if(operators.includes(clicked)){
+        if(clicked !== '='){
+        screenTop.textContent = screenBottom.textContent
+        screenBottom.textContent = ''
+        operatorScreen.textContent = clicked
+        }
+        else{
+            let operand1 = parseInt(screenTop.textContent)
+            let operand2 = parseInt(screenBottom.textContent)
+            alert(operand1*operand2)
+        }
+    }
 
-// display()
+}

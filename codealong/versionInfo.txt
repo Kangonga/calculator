@@ -1,0 +1,21 @@
+A calculator has several functionalities
+1: take input from user clicks on buttons
+2: check type of input ie number,operator,decimal etc
+4: display the values
+3: control flow
+3.1: If input is a number, allow only one decimal place
+3.2: Append all number input
+3.3: If clear is encountered; reset everything
+3.4: If an operator is encountered, dont append
+3.4.1: Store the existing data on a variable
+3.4.2: Store the operator on a variable
+3.4.2: wait for another variable
+3.4.3: append the variable on screen
+3.5: If another value is detected, evaluate the first two
+3.5.1: pass that to the first operand.
+3.5.2: repeat step 3.4 
+VERSION 1.0
+1:Detect numbers
+2:Detect operators
+3:Display
+4://compute results
