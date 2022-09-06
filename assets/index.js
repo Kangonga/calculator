@@ -9,7 +9,7 @@
 //puts first operand to top screen when a operator is pressed
 //displays the operator used
 
-const numbers = [1,2,3,4,5,6,7,8,9]
+const numbers = [0,1,2,3,4,5,6,7,8,9]
 const operators = ['/','*','%','^','+','-','=','x']
 const buttonContainer = document.querySelector('#buttonContainer')
 buttonContainer.addEventListener('click',handleclick)
@@ -22,6 +22,7 @@ function handleclick(event){
     let clicked = event.target.textContent
     let operator,result;
     let calculating = true;
+    let operand1,operand2;
     if(numbers.includes(parseInt(clicked))){
         screenBottom.textContent += clicked
     }
@@ -39,8 +40,8 @@ function handleclick(event){
         operator = clicked
         }
         else if(clicked == '='){
-            let operand1 = parseInt(screenTop.textContent)
-            let operand2 = parseInt(screenBottom.textContent)
+            operand1 = parseInt(screenTop.textContent)
+            operand2 = parseInt(screenBottom.textContent)
             if(operatorScreen.textContent == 'x'){
                 result = operand1*operand2
             }
